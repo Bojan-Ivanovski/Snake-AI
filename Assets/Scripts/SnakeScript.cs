@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SnakeScript : MonoBehaviour
 {
@@ -76,10 +77,9 @@ public class SnakeScript : MonoBehaviour
                 }
                 else if (checkObject.name.Contains("1point"))
                     WorldObject.GetComponent<NewBehaviourScript>().GlobalPoints += 1;
-                if (checkObject.name.Contains("SnakeBody"))
+                if (checkObject.name.Contains("SnakeBody") || WorldObject.GetComponent<NewBehaviourScript>().GlobalPoints < 0)
                 {
-                    Debug.Log("QUIT");
-                    Application.Quit();
+                    SceneManager.LoadScene(2);
                 }
                 Destroy(SpacesOnScreen[new Vector3(position.x, position.y, 0)]);
             }
