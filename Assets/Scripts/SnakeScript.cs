@@ -9,7 +9,9 @@ public class SnakeScript : MonoBehaviour
     private bool SecondTime = false;
     private List<Vector3> SnakeMemory;
     public GameObject WorldObject;
+    public GameObject StartAiButton;
     public GameObject SnakeBody;
+    
     private float SnakeTimer = 0f;
     private Dictionary<Vector3, GameObject> SpacesOnScreen;
     private Vector3 position = new Vector3(-15, 7, -1);
@@ -18,6 +20,7 @@ public class SnakeScript : MonoBehaviour
 
     void Start()
     {
+        
         SnakeMemory = new List<Vector3>();
         SpacesOnScreen = WorldObject.GetComponent<NewBehaviourScript>().SpacesOnScreen;
         SpacesOnScreen[new Vector3(position.x, position.y, 0)] = gameObject;
@@ -28,29 +31,32 @@ public class SnakeScript : MonoBehaviour
     void Update()
     {
         SnakeTimer += Time.deltaTime;
-        if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && VectorToAdd.y != -1 && VectorToAdd.y != 1 && !blocked)
+        if (!WorldObject.GetComponent<NewBehaviourScript>().useSelected)
         {
-            VectorToAdd = new Vector3(0, 1, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
-            blocked = true;
-        }
-        if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && VectorToAdd.y != 1 && VectorToAdd.y != -1 && !blocked)
-        {
-            VectorToAdd = new Vector3(0, -1, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            blocked = true;
-        }
-        if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && VectorToAdd.x != 1 && VectorToAdd.x != -1 && !blocked)
-        {
-            VectorToAdd = new Vector3(-1, 0, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
-            blocked = true;
-        }
-        if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && VectorToAdd.x != -1 && VectorToAdd.x != 1 && !blocked)
-        {
-            VectorToAdd = new Vector3(1, 0, 0);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
-            blocked = true;
+            if ((Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && VectorToAdd.y != -1 && VectorToAdd.y != 1 && !blocked)
+            {
+                VectorToAdd = new Vector3(0, 1, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 180);
+                blocked = true;
+            }
+            if ((Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) && VectorToAdd.y != 1 && VectorToAdd.y != -1 && !blocked)
+            {
+                VectorToAdd = new Vector3(0, -1, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
+                blocked = true;
+            }
+            if ((Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) && VectorToAdd.x != 1 && VectorToAdd.x != -1 && !blocked)
+            {
+                VectorToAdd = new Vector3(-1, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 270);
+                blocked = true;
+            }
+            if ((Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) && VectorToAdd.x != -1 && VectorToAdd.x != 1 && !blocked)
+            {
+                VectorToAdd = new Vector3(1, 0, 0);
+                gameObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+                blocked = true;
+            }
         }
 
         if (SnakeTimer > 0.8f) 

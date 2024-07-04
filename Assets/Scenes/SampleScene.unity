@@ -223,7 +223,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076921018}
+        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
+        m_MethodName: SelectedAI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 26836673}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_Dropdown, Unity.TextMeshPro
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!114 &26836674
 MonoBehaviour:
@@ -628,6 +640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WorldObject: {fileID: 1076921017}
+  StartAiButton: {fileID: 519420028}
   SnakeBody: {fileID: 1626751755629039966, guid: 2ef790b8a87a5ea479a7a27be203e2f4, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -5948,6 +5961,11 @@ MonoBehaviour:
   Apple: {fileID: 1336850191201669495, guid: 859da7bb86ec991439e5b3a06406c80d, type: 3}
   BadApple: {fileID: 4186813643145610629, guid: b5100f03125d48d40ad0464c6b2c0fae, type: 3}
   ObjectUI: {fileID: 819432463}
+  useSelected: 0
+  selectedValue: 0
+  changeText: {fileID: 1242609079}
+  change1: {fileID: 21300000, guid: 47aba1fdd367a1c4abe81e6243cf8584, type: 3}
+  change2: {fileID: 21300000, guid: f9282ddc59bb271488c618eeaf2b6c7c, type: 3}
 --- !u!4 &1076921019
 Transform:
   m_ObjectHideFlags: 0
@@ -6134,7 +6152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1242609080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1076921018}
+        m_TargetAssemblyTypeName: NewBehaviourScript, Assembly-CSharp
+        m_MethodName: UseSelected
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1242609080
 MonoBehaviour:
   m_ObjectHideFlags: 0
