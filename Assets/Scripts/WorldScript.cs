@@ -15,6 +15,33 @@ public class NewBehaviourScript : MonoBehaviour
     public Dictionary<Vector3,GameObject> SpacesOnScreen;
     public GameObject ObjectUI;
 
+
+    public bool useSelected = false;
+    public int selectedValue = 0;
+    public UnityEngine.UI.Button changeText;
+    public Sprite change1;
+    public Sprite change2;
+
+
+    public void SelectedAI(TMP_Dropdown selected)
+    {
+        selectedValue = selected.value;
+    }
+
+    public void UseSelected()
+    {
+        if (useSelected)
+        {
+            changeText.image.sprite = change2;
+        }
+        if (!useSelected)
+        {
+            changeText.image.sprite = change1;
+        }
+        useSelected = !useSelected;
+    }
+
+
     private void Awake()
     {
         SpacesOnScreen = new Dictionary<Vector3, GameObject>();
