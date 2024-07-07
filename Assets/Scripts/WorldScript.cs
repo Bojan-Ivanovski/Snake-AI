@@ -11,9 +11,11 @@ public class NewBehaviourScript : MonoBehaviour
     private float WorldTimer = 0f;
     private float AppleTimer = 0f;
     public GameObject Apple;
+    public List<GameObject> ApplesOnScreen = new List<GameObject>();
     public GameObject BadApple;
     public Dictionary<Vector3,GameObject> SpacesOnScreen;
     public GameObject ObjectUI;
+    public GameObject Snake;
 
 
     public bool useSelected = false;
@@ -45,7 +47,7 @@ public class NewBehaviourScript : MonoBehaviour
     private void Awake()
     {
         SpacesOnScreen = new Dictionary<Vector3, GameObject>();
-        for (int i = -15; i < 16; i++)
+        for (int i = -13; i < 14; i++)
             for (int j = -7; j < 8; j++)
                 SpacesOnScreen.Add(new Vector3(i, j, 0), null);
     }
@@ -62,11 +64,11 @@ public class NewBehaviourScript : MonoBehaviour
             ApplesToLoad = 2;
         
         AppleTimer += Time.deltaTime;
-        if(AppleTimer > 4f)
+        if(Snake.GetComponent<SnakeScript>().AppleEaten)
         {
-            List<GameObject> Selections = new List<GameObject>() {Apple, BadApple, Apple, Apple, BadApple};
-            SpawnObject(Selections[UnityEngine.Random.Range(0, Selections.Count)]);
-            AppleTimer = 0f;
+            SpawnObject(Apple);
+
+            Snake.GetComponent<SnakeScript>().AppleEaten = false;
         }
         ObjectUI.GetComponent<TextMeshProUGUI>().text = "Points: " + GlobalPoints;
     }
@@ -77,7 +79,7 @@ public class NewBehaviourScript : MonoBehaviour
         {
             bool UseFillFree = true;
             int SmallCounter = 0;
-            int X = UnityEngine.Random.Range(-15, 16);
+            int X = UnityEngine.Random.Range(-13, 14);
             int Y = UnityEngine.Random.Range(-7, 8);
             Vector3 position = new Vector3(X, Y, 0);
 
@@ -85,11 +87,13 @@ public class NewBehaviourScript : MonoBehaviour
             {
                 if (SpacesOnScreen[position] == null)
                 {
-                    SpacesOnScreen[position] = Instantiate(ObjectToSpawn, position, Quaternion.identity);
+                    GameObject temp = Instantiate(ObjectToSpawn, position, Quaternion.identity);
+                    ApplesOnScreen.Add(temp);
+                    SpacesOnScreen[position] = temp;
                     UseFillFree = false;
                     break;
                 }
-                X = UnityEngine.Random.Range(-15, 15);
+                X = UnityEngine.Random.Range(-13, 13);
                 Y = UnityEngine.Random.Range(-7, 7);
                 position = new Vector3(X, Y, 0);
                 SmallCounter++;
