@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 658, y: 303.84}
+  m_AnchoredPosition: {x: 929.41, y: 509}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &26836673
@@ -215,7 +215,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Depth First Search
       m_Image: {fileID: 0}
-    - m_Text: Unicost Search
+    - m_Text: Uniform Cost Search
       m_Image: {fileID: 0}
     - m_Text: Greedy Search
       m_Image: {fileID: 0}
@@ -621,7 +621,7 @@ Transform:
   m_GameObject: {fileID: 518574492}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.74, y: 8.44, z: -1}
+  m_LocalPosition: {x: -14.28, y: 6.94, z: -1}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -642,6 +642,10 @@ MonoBehaviour:
   WorldObject: {fileID: 1076921017}
   StartAiButton: {fileID: 519420028}
   SnakeBody: {fileID: 1626751755629039966, guid: 2ef790b8a87a5ea479a7a27be203e2f4, type: 3}
+  SnakePath: {fileID: 5600555589707821193, guid: eb93a837f82899f4ba12c4a9ef2e5135, type: 3}
+  SnakeRedPath: {fileID: 4758973471114075311, guid: b4c4ffeaff95cda4fb86d759cbd32374, type: 3}
+  AppleEaten: 0
+  blockedByAI: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -938,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -468, y: 303.92}
+  m_AnchoredPosition: {x: -742, y: 508.92}
   m_SizeDelta: {x: 400.1132, y: 30.1566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &819432465
@@ -1166,7 +1170,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 368b9f2966575ab4a8f0de0a0cf2128f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5959,8 +5963,10 @@ MonoBehaviour:
   GlobalPoints: 0
   ApplesToLoad: 1
   Apple: {fileID: 1336850191201669495, guid: 859da7bb86ec991439e5b3a06406c80d, type: 3}
+  ApplesOnScreen: []
   BadApple: {fileID: 4186813643145610629, guid: b5100f03125d48d40ad0464c6b2c0fae, type: 3}
   ObjectUI: {fileID: 819432463}
+  Snake: {fileID: 518574492}
   useSelected: 0
   selectedValue: 0
   changeText: {fileID: 1242609079}
@@ -6106,7 +6112,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 608.64465, y: -298.23004}
+  m_AnchoredPosition: {x: 880.05, y: -500.83}
   m_SizeDelta: {x: 128.7107, y: 48.4891}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242609079
@@ -6457,7 +6463,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 689, y: -298.23}
+  m_AnchoredPosition: {x: 952, y: -500.83}
   m_SizeDelta: {x: 400.1132, y: 30.1566}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037777321
